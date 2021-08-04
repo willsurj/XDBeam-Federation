@@ -13,10 +13,9 @@
 <style>
     footer {
         width: 100%;
-        background-color: var(--middle-dark);
-        color: white;
+        background-color: white;
+        color: var(--middle-dark);
         margin-top: auto;
-        filter: drop-shadow(0px -1px 6px rgb(14, 14, 14));
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -26,12 +25,13 @@
     }
 
     a {
-        color: white;
+        color: inherit;
         text-decoration: none;
     }
 
     .gh {
         height: 2em;
         width: 2em;
+        color: inherit;
     }
 </style>

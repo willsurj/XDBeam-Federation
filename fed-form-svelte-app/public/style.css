@@ -1,23 +1,23 @@
 :root {
     --black: rgb(24, 24, 24);
     --white: #eee;
-    --green: #22b573;
+    --green: #5522b5;
     --blue: #278dc1;
-    --middle: #25a09b;
-    --light: #7ce6e2;
+    --middle: #2542a0;
+    --light: #7c95e6;
 
-    --green-dark: #2f3d38;
+    --green-dark: #322f3d;
     --blue-dark: #2f434d;
-    --middle-dark: #293535;
-    --middle-darkless: #324141;
-    --middle-darker: #202929;
+    --middle-dark: #292e35;
+    --middle-darkless: #323741;
+    --middle-darker: #202129;
 
-    --btn-bg: rgb(218, 236, 230);
-    --btn-txt: #538176;
-    --btn-bg-h: rgb(198, 216, 210);
-    --btn-txt-h: #4b9282;
-    --btn-bg-a: #304948;
-    --btn-txt-a: rgb(232, 248, 243);
+    --btn-bg: rgb(218, 223, 236);
+    --btn-txt: #536581;
+    --btn-bg-h: rgb(198, 209, 216);
+    --btn-txt-h: #4b7092;
+    --btn-bg-a: #303a49;
+    --btn-txt-a: rgb(232, 240, 248);
 }
 
 h1 {
@@ -33,7 +33,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--black);
+    background: var(--middle);
+        background: linear-gradient(-150deg,  rgb(69, 159, 204) 0%, #530ac0 100%);
     color: white;
     box-sizing: border-box;
 }

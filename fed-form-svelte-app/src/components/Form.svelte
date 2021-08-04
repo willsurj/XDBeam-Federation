@@ -1,5 +1,6 @@
 <script>
-    let destination = "";
+    let email = "";
+    let id = "";
 
     import {
         balances,
@@ -13,29 +14,20 @@
     }
 </script>
 <div class="everything">
-    <h2>Send DigitalBits to Anyone</h2>
+    <h2>Add Your Email Address to the XDBeam Federation Service</h2>
     <main>
         <form action="">
-            {#if !$apiLoading}
         <div class="inputs">
             <div class="field">
-                <input type="text" name="destination" class="input" placeholder=" " bind:value="{destination}" />
-                <label for="email" class="label">Destination Address</label>
+                <input type="text" name="email" class="input" placeholder=" " bind:value="{email}" />
+                <label for="email" class="label">Email Address</label>
             </div>
-            <div class="field" id="value">
-                <input type="text" name="value" class="input" placeholder=" " />
-                <label for="email" class="label">Value</label>
+            <div class="field">
+                <input type="text" name="id" class="input" placeholder=" " bind:value="{id}" />
+                <label for="id" class="label">Digitalbits ID</label>
             </div>
-                <select name="token" id="token">
-                    {#each $balances as bal, i}
-                    <option value="i">
-                        {bal.asset_type === "native" ? "XDB" : bal.asset_code}
-                    </option>
-                    {/each}
-                </select>
         </div>
-        <Button on:click={signForm}>Sign and Submit</Button>
-        {/if}
+        <Button on:click={signForm}>Submit</Button>
     </form>
 </main>
 </div>
@@ -74,19 +66,6 @@
         border-bottom: 2px dashed white;
         margin: 2.2rem auto 1rem;
         transition: 500ms;
-    }
-
-    #value {
-        width: 70%;
-        margin: 2.2rem 0 1rem;
-        float: left;
-    }
-
-    #token {
-        position: relative;
-        left: 35px;
-        top: 31px;
-        height: 25%;
     }
 
     .label {
@@ -149,7 +128,7 @@
 
     .everything {
         box-sizing: border-box;
-        width: 48%;
+        width: 100%;
     }
 
 </style>

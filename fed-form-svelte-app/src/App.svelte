@@ -1,32 +1,23 @@
 <script>
-	import Wallet from './components/Wallet.svelte';
-	import WalletPreview from './components/WalletPreview.svelte'
 	import Header from './components/Header.svelte';
 	import Footer from './components/Footer.svelte';
-	import BeamForm from './components/BeamForm.svelte';
 	import Popup from './components/Popup.svelte';
+	import Form from './components/Form.svelte';
 
 	import {
 		loggedIn
 	} from './store'
+	
 	import Button from './components/Button.svelte';
 </script>
 
 <Header />
 
-{#if $loggedIn}
 	<div>
 		<article class="ui">
-			<Wallet />
-			<BeamForm />
+			<Form />
 		</article>
 	</div>
-
-{:else}
-	<div>
-		<WalletPreview />
-	</div>
-{/if}
 
 <Popup />
 <Footer />
@@ -47,7 +38,7 @@
 	article {
 		display: flex;
 		width: 100%;
-		max-width: 1000px;
+		max-width: 750px;
 		flex-direction: row;
 		box-sizing: border-box;
 	}
