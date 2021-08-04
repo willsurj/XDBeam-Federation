@@ -9,7 +9,7 @@ It is an open federation service, which allows anyone to make payments to you by
 Plus, when using the [XDBeam Wallet][2], users don't even have to remember the suffix.
 
 Currently everything is in the prototype-building stage, and not ready for use.
-The service will soon be available at [federation.XDBe.am][5]
+The service will soon be available at [federation.xdbe.am][5]
 
 Watch [the XDBeam introduction video][4] for more information and a walkthrough of the whole XDBeam system.
 
