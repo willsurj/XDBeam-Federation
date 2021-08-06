@@ -1,5 +1,10 @@
 <script>
-import { get_custom_elements_slots } from 'svelte/internal';
+    import {
+        popupActive,
+        email,
+        id
+    } from '../store';
+    import Button from './Button.svelte';
 
     let emaili = "";
     $: emailu = emaili.toLowerCase();
@@ -8,13 +13,6 @@ import { get_custom_elements_slots } from 'svelte/internal';
 
     let emailValid = true;
     let idValid = true;
-
-    import {
-        popupActive,
-        email,
-        id
-    } from '../store';
-    import Button from './Button.svelte';
 
     function signForm() {
         console.log(`email is ${emailu}`);
@@ -37,23 +35,24 @@ import { get_custom_elements_slots } from 'svelte/internal';
         }
     }
 </script>
+
 <div class="everything">
     <h2>Add Your Email Address to the XDBeam Federation Service</h2>
     <main>
         <form action="">
-        <div class="inputs">
-            <div class="{emailValid ? "field" : "fieldError"}">
-                <input type="text" name="email" class="input" placeholder=" " bind:value="{emaili}" />
-                <label for="email" class="label">Email Address</label>
+            <div class="inputs">
+                <div class="{emailValid ? "field" : "fieldError"}">
+                    <input type="text" name="email" class="input" placeholder=" " bind:value="{emaili}" />
+                    <label for="email" class="label">Email Address</label>
+                </div>
+                <div class="{idValid ? "field" : "fieldError"}">
+                    <input type="text" name="id" class="input" placeholder=" " bind:value="{idi}" />
+                    <label for="id" class="label">Digitalbits ID</label>
+                </div>
             </div>
-            <div class="{idValid ? "field" : "fieldError"}">
-                <input type="text" name="id" class="input" placeholder=" " bind:value="{idi}" />
-                <label for="id" class="label">Digitalbits ID</label>
-            </div>
-        </div>
-        <Button on:click={signForm}>Submit</Button>
-    </form>
-</main>
+            <Button on:click={signForm}>Submit</Button>
+        </form>
+    </main>
 </div>
 
 <style>

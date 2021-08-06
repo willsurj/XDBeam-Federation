@@ -23,6 +23,7 @@
     function confirmClick() {
         sending.set(true);
         // send to the server
+        // use a function in a store so that the popup can disappear?
         hide();
     }
 

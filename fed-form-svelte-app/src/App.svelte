@@ -5,7 +5,7 @@
 	import Form from './components/Form.svelte';
 
 	import {
-		sending
+		sending, sent
 	} from "./store";
 </script>
 
@@ -16,6 +16,14 @@
 	<article class="ui">
 		<div>
 			Loading...
+		</div>
+	</article>
+</div>
+{:else if $sent}
+<div>
+	<article class="ui">
+		<div>
+			Your details were successfully added to XDBeam Federation.
 		</div>
 	</article>
 </div>
