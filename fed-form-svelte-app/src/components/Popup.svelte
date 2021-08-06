@@ -27,7 +27,7 @@
         hide();
     }
 
-    $: idShorter = $id.substring(0, 6) + "..." + $id.substring(50);
+    $: idShorter = $id.substring(0, 7) + "..." + $id.substring(51);
 
 </script>
 
