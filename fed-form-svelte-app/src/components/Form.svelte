@@ -1,16 +1,40 @@
 <script>
-    let email = "";
-    let id = "";
+import { get_custom_elements_slots } from 'svelte/internal';
+
+    let emaili = "";
+    $: emailu = emaili.toLowerCase();
+    let idi = "";
+    $: idu = idi.toUpperCase();
+
+    let emailValid = true;
+    let idValid = true;
 
     import {
-        balances,
-        apiLoading,
-        txPopupActive
+        popupActive,
+        email,
+        id
     } from '../store';
     import Button from './Button.svelte';
 
     function signForm() {
-        txPopupActive.set(true);
+        console.log(`email is ${emailu}`);
+        console.log(`id is ${idu}`);
+        const eregex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
+        if (eregex.test(emailu)) {
+            emailValid = true;
+            const iregex = new RegExp("([A-Z0-9])+", "g");
+            if (id.length = 56 &&
+            iregex.test(idu)) {
+                idValid = true;
+                email.set(emailu);
+                id.set(idu);
+                popupActive.set(true);
+            } else { //invalid id
+                idValid = false;
+            }
+        } else { //invalid email
+            emailValid = false;
+        }
     }
 </script>
 <div class="everything">
@@ -18,12 +42,12 @@
     <main>
         <form action="">
         <div class="inputs">
-            <div class="field">
-                <input type="text" name="email" class="input" placeholder=" " bind:value="{email}" />
+            <div class="{emailValid ? "field" : "fieldError"}">
+                <input type="text" name="email" class="input" placeholder=" " bind:value="{emaili}" />
                 <label for="email" class="label">Email Address</label>
             </div>
-            <div class="field">
-                <input type="text" name="id" class="input" placeholder=" " bind:value="{id}" />
+            <div class="{idValid ? "field" : "fieldError"}">
+                <input type="text" name="id" class="input" placeholder=" " bind:value="{idi}" />
                 <label for="id" class="label">Digitalbits ID</label>
             </div>
         </div>
@@ -64,6 +88,15 @@
         margin: 0 auto;
         position: relative;
         border-bottom: 2px dashed white;
+        margin: 2.2rem auto 1rem;
+        transition: 500ms;
+    }
+
+    .fieldError {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        border-bottom: 2px dashed red;
         margin: 2.2rem auto 1rem;
         transition: 500ms;
     }

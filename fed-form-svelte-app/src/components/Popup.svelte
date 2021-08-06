@@ -3,28 +3,50 @@
         fade
     } from 'svelte/transition';
 
+    import Button from './Button.svelte';
     import MdClose from 'svelte-icons/md/MdClose.svelte'
 
     import {
-        txPopupActive
+        popupActive,
+        email,
+        id, sending
     } from '../store';
 
     export const show = () => {
-        txPopupActive.set(true);
+        popupActive.set(true);
     }
 
     export const hide = () => {
-        txPopupActive.set(false);
+        popupActive.set(false);
     }
+
+    function confirmClick() {
+        sending.set(true);
+        // send to the server
+        hide();
+    }
+
+    $: idShorter = $id.substring(0, 6) + "..." + $id.substring(50);
+
 </script>
 
-{#if $txPopupActive}
+{#if $popupActive}
     <div on:focus={hide} tabindex="0" class="bg" transition:fade>
         <div tabindex="0" class="popup">
-            <a class="x" href="/" on:click={hide}>
+            <div class="x" on:click={hide}>
                 <MdClose  />
-            </a>
-            <div class="content"></div>
+            </div>
+            <div class="content">
+                <div class="checkthese">
+                    Are you sure you want to link<br>
+                    <div class="checkthis">{$email}</div>
+                    to<br>
+                    <div class="checkthis" id="id">{idShorter}</div>?
+                </div>
+                <Button on:click={confirmClick}>
+                    Confirm
+                </Button>
+            </div>
         </div>
     </div>
 {/if}
@@ -54,22 +76,51 @@
         color: white;
     }
 
+    .checkthese {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0.6em;
+        box-sizing: border-box;
+    }
+
+    .checkthis {
+        text-align: center;
+        display: inline;
+        font-weight: bold;
+        background-color: var(--middle-darker);
+        border-radius: 100px;
+        padding: 0.3em 0.5em;
+        margin: 0.3em;
+    }
+
+    #id {
+        display: inline-block;
+    }
+
     .content {
         height: 80%;
         margin: 2em;
         background-color: var(--middle-darkless);
         box-sizing: border-box;
         border-radius: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .x {
         position: absolute;
         right: -0.7em;
-    top: -0.7em;
-    height: 2.3em;
-    width: 2.3em;
+        top: -0.7em;
+        height: 2.3em;
+        width: 2.3em;
         background-color: var(--btn-bg);
         color: var(--middle);
         border-radius: 100%;
+        cursor: pointer;
     }
 </style>

@@ -5,19 +5,27 @@
 	import Form from './components/Form.svelte';
 
 	import {
-		loggedIn
-	} from './store'
-	
-	import Button from './components/Button.svelte';
+		sending
+	} from "./store";
 </script>
 
 <Header />
 
-	<div>
-		<article class="ui">
-			<Form />
-		</article>
-	</div>
+{#if $sending}
+<div>
+	<article class="ui">
+		<div>
+			Loading...
+		</div>
+	</article>
+</div>
+{:else}
+<div>
+	<article class="ui">
+		<Form />
+	</article>
+</div>
+{/if}
 
 <Popup />
 <Footer />
